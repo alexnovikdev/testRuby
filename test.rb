@@ -26,7 +26,7 @@ end
 productName = doc.css('#bigpic')[0]['title'] + " - " + wieght
 imageUrl =  doc.css('#bigpic')[0]['src']
 
-# implements with XPath
+# implemented with XPath
 
 =begin
 doc.xpath(".//*[@class='attribute_labels_lists']").each do |element|

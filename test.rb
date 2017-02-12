@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'nokogiri'
 require 'csv'
+require 'rubygems'
+require 'mechanize'
 
 print "Введите имя файла для записи: "
 filename = gets.strip.to_s + ".csv"
@@ -10,15 +12,23 @@ filename = gets.strip.to_s + ".csv"
  url = 'http://www.petsonic.com/es/perros/snacks-y-huesos-perro'
 # url = 'http://www.petsonic.com/es/perros/comida-humeda'
 
-html = open(url)
-doc = Nokogiri::HTML(html)
+agent = Mechanize.new
+page = agent.get(url)
+form = page.form_with(:class => 'showall pull-left')
+page = agent.submit(form)
+
+=begin
+puts html = open(url)
+=end
+doc = Nokogiri::HTML(page.body)
+
+
 
 weight = ''
 price_old = ''
 price_kg = ''
 productName = ''
 imageUrl = ''
-
 
 
 doc.css(".product_img_link").each do |product|

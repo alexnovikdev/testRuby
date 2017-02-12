@@ -7,7 +7,6 @@ require 'mechanize'
 print "Введите имя файла для записи: "
 filename = gets.strip.to_s + ".csv"
 
-
 # категория файла ввиде url
  url = 'http://www.petsonic.com/es/perros/snacks-y-huesos-perro'
 # url = 'http://www.petsonic.com/es/perros/comida-humeda'
@@ -22,14 +21,11 @@ puts html = open(url)
 =end
 doc = Nokogiri::HTML(page.body)
 
-
-
 weight = ''
 price_old = ''
 price_kg = ''
 productName = ''
 imageUrl = ''
-
 
 doc.css(".product_img_link").each do |product|
 
